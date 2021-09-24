@@ -34,14 +34,15 @@ function computerPlay(){
     return (num === 2) ? 'paper' : 'scissors';
 }
 
-const rock_btn = document.querySelector('#rock');
-rock_btn.addEventListener('click', () => {console.log(playRound('rock'))});
-const paper_btn = document.querySelector('#paper');
-paper_btn.addEventListener('click', () => {console.log(playRound('paper'))});
-const scissors_btn = document.querySelector('#scissors');
-scissors_btn.addEventListener('click', () => {console.log(playRound('scissors'))});
 
 
+
+function passPlayerInput(e){
+    console.log(playRound(e.target.classList.value));
+}
+
+const body = document.querySelectorAll('button');
+body.forEach(div => div.addEventListener('click', passPlayerInput));
 
 
 
