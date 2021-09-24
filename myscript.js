@@ -1,25 +1,25 @@
 // play a single round of Rock Paper Scissors
-// note how we are passing a function into another function (computerPlay)
-function playRound(playerSelection,computerPlay){
+function playRound(playerSelection){
     playerSelection = playerSelection.toLowerCase();
-    if (playerSelection === computerPlay){
+    computerSelection = computerPlay();
+    if (playerSelection === computerSelection){
         return `It's a draw!`
     }
     // check for scissors rock, rock paper, then paper scissors
     if (playerSelection === 'rock'){
-        return (computerPlay === 'scissors') ? 
-        `You won! ${playerSelection} beats ${computerPlay}.` :
-        `You lost! ${computerPlay} beats ${playerSelection}`;
+        return (computerSelection === 'scissors') ? 
+        `You won! ${playerSelection} beats ${computerSelection}.` :
+        `You lost! ${computerSelection} beats ${playerSelection}`;
     }
     if (playerSelection === 'paper'){
-        return (computerPlay === 'scissors') ? 
-        `You won! ${playerSelection} beats ${computerPlay}.` :
-        `You lost! ${computerPlay} beats ${playerSelection}`;
+        return (computerSelection === 'rock') ? 
+        `You won! ${playerSelection} beats ${computerSelection}.` :
+        `You lost! ${computerSelection} beats ${playerSelection}`;
     }
-    if (playerSelection === 'rock'){
-        return (computerPlay === 'paper') ? 
-        `You won! ${playerSelection} beats ${computerPlay}.` :
-        `You lost! ${computerPlay} beats ${playerSelection}`;
+    if (playerSelection === 'scissors'){
+        return (computerSelection === 'paper') ? 
+        `You won! ${playerSelection} beats ${computerSelection}.` :
+        `You lost! ${computerSelection} beats ${playerSelection}`;
     }
 }
 
@@ -34,10 +34,16 @@ function computerPlay(){
     return (num === 2) ? 'paper' : 'scissors';
 }
 
-function game(){
-    for(let i=0; i<5; i++){
-        let playerSelection = prompt('Pick Rock, Paper or Scissors!');
-        playRound(playerSelection);
-    }
-}
-game();
+const rock_btn = document.querySelector('#rock');
+rock_btn.addEventListener('click', () => {console.log(playRound('rock'))});
+const paper_btn = document.querySelector('#paper');
+paper_btn.addEventListener('click', () => {console.log(playRound('paper'))});
+const scissors_btn = document.querySelector('#scissors');
+scissors_btn.addEventListener('click', () => {console.log(playRound('scissors'))});
+
+
+
+
+
+
+
